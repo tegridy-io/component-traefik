@@ -1,0 +1,5 @@
+= Traefik Proxy
+
+traefik is a Commodore component to manage Traefik Proxy.
+
+See the xref:references/parameters.adoc[parameters] reference for further details.

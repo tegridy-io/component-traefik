@@ -1,0 +1,4 @@
+parameters:
+  traefik:
+    =_metadata: {}
+    namespace: syn-traefik
