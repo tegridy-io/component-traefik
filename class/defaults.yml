@@ -1,4 +1,46 @@
 parameters:
   traefik:
     =_metadata: {}
-    namespace: syn-traefik
+    namespace: syn-ingress-traefik
+
+    charts:
+      traefik:
+        source: https://helm.traefik.io/traefik
+        version: 20.8.0
+
+    # Can be either Deployment or DaemonSet
+    kind: DaemonSet
+
+    resources: {}
+      # requests:
+      #   cpu: "100m"
+      #   memory: "50Mi"
+      # limits:
+      #   cpu: "300m"
+      #   memory: "150Mi"
+
+    affinity: {}
+    nodeSelector: {}
+    tolerations: []
+
+    helmValues:
+      deployment:
+        kind: ${traefik:kind}
+      resources: ${traefik:resources}
+      affinity: ${traefik:affinity}
+      nodeSelector: ${traefik:nodeSelector}
+      tolerations: ${traefik:tolerations}
+      priorityClassName: system-cluster-critical
+      # Configure ports
+      ports:
+        web:
+          # Port Redirections
+          # Added in 2.2, you can make permanent redirects via entrypoints.
+          # https://docs.traefik.io/routing/entrypoints/#redirection
+          # redirectTo: websecure
+          redirectTo: websecure
+        websecure:
+          # Set TLS at the entrypoint
+          # https://doc.traefik.io/traefik/routing/entrypoints/#tls
+          tls:
+            enabled: true
