@@ -25,3 +25,9 @@ parameters:
           name: traefik
           namespace: ${traefik:namespace}
           dependency_update: true
+  commodore:
+    postprocess:
+      filters:
+        - type: jsonnet
+          path: traefik/10_helmchart/traefik/crds
+          filter: postprocess/patch_crd.jsonnet
