@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/instance: traefik-syn-ingress-traefik
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: traefik
-    helm.sh/chart: traefik-20.8.0
+    helm.sh/chart: traefik-24.0.0
   name: traefik-syn-ingress-traefik
 rules:
   - apiGroups:
@@ -36,6 +36,7 @@ rules:
     verbs:
       - update
   - apiGroups:
+      - traefik.io
       - traefik.containo.us
     resources:
       - ingressroutes
