@@ -6,7 +6,7 @@ parameters:
     charts:
       traefik:
         source: https://helm.traefik.io/traefik
-        version: 24.0.0
+        version: 26.0.0
 
     # Can be either Deployment or DaemonSet
     kind: DaemonSet
@@ -38,7 +38,8 @@ parameters:
           # Added in 2.2, you can make permanent redirects via entrypoints.
           # https://docs.traefik.io/routing/entrypoints/#redirection
           # redirectTo: websecure
-          redirectTo: websecure
+          redirectTo:
+            port: websecure
         websecure:
           # Set TLS at the entrypoint
           # https://doc.traefik.io/traefik/routing/entrypoints/#tls
