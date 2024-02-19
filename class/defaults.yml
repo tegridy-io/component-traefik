@@ -6,7 +6,7 @@ parameters:
     charts:
       traefik:
         source: https://helm.traefik.io/traefik
-        version: 26.0.0
+        version: 26.1.0
 
     # Can be either Deployment or DaemonSet
     kind: DaemonSet
