@@ -22,3 +22,4 @@ ignore: |
   manifests/
   vendor/
   compiled/
+  tests/golden/defaults/traefik/traefik/10_helmchart/traefik/crds/gateway-standard-install.yaml
