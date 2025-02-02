@@ -8,7 +8,7 @@ parameters:
     charts:
       traefik:
         source: https://helm.traefik.io/traefik
-        version: 26.1.0
+        version: 34.2.0
 
     # Can be either Deployment or DaemonSet
     kind: DaemonSet
@@ -33,15 +33,20 @@ parameters:
       nodeSelector: ${traefik:nodeSelector}
       tolerations: ${traefik:tolerations}
       priorityClassName: system-cluster-critical
+      gateway:
+        enabled: false
       # Configure ports
       ports:
         web:
-          # Port Redirections
-          # Added in 2.2, you can make permanent redirects via entrypoints.
+          # -- Port Redirections
+          # Added in 2.2, one can make permanent redirects via entrypoints.
+          # Same sets of parameters: to, scheme, permanent and priority.
           # https://docs.traefik.io/routing/entrypoints/#redirection
-          # redirectTo: websecure
-          redirectTo:
-            port: websecure
+          redirections:
+            entryPoint:
+              to: websecure
+              scheme: https
+              permanent: true
         websecure:
           # Set TLS at the entrypoint
           # https://doc.traefik.io/traefik/routing/entrypoints/#tls
