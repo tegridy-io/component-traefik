@@ -8,7 +8,7 @@ parameters:
     charts:
       traefik:
         source: https://helm.traefik.io/traefik
-        version: 34.4.0
+        version: 34.4.1
 
     # Can be either Deployment or DaemonSet
     kind: DaemonSet
